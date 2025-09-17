@@ -1,0 +1,14 @@
+{
+  "name": "tile2-macos",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tile 2.0 macOS overlay + window controller",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "28.2.0"
+  }
+}
+

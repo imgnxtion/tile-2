@@ -1,0 +1,107 @@
+:root {
+  --bg: #0e1013;
+  --panel: #161a20;
+  --panel-alt: #1c2129;
+  --accent: #4aa8ff;
+  --accent-2: #8a5cff;
+  --text: #d8dee9;
+  --muted: #8b939c;
+  --danger: #ff5f5f;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1000px 600px at 10% -10%, #141922, transparent), var(--bg);
+  color: var(--text);
+  font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+#app { height: 100vh; display: flex; flex-direction: column; }
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.5), rgba(0,0,0,0.1));
+  border-bottom: 1px solid #222833;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.hud-left { display: flex; align-items: center; gap: 12px; }
+.logo { font-weight: 700; letter-spacing: 0.4px; color: var(--accent); }
+.layout-name { color: var(--muted); }
+
+.hud-right { display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); }
+
+.grid {
+  flex: 1;
+  display: grid;
+  gap: 8px;
+  padding: 8px;
+  grid-auto-rows: 1fr;
+  background: repeating-linear-gradient(45deg, rgba(255,255,255,0.03) 0 10px, transparent 10px 20px) var(--bg);
+}
+
+.tile {
+  position: relative;
+  background: linear-gradient(180deg, var(--panel), var(--panel-alt));
+  border: 1px solid #283142;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 120ms ease, outline 60ms ease, box-shadow 120ms ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  display: flex; flex-direction: column;
+}
+
+.tile.focused {
+  outline: 2px solid var(--accent);
+  z-index: 2;
+  box-shadow: 0 10px 22px rgba(74,168,255,0.25);
+}
+
+.tile.maximized {
+  outline: 2px solid var(--accent-2);
+}
+
+.tile .titlebar {
+  padding: 6px 8px;
+  font-weight: 600;
+  color: #b7c3d6;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(0,0,0,0.04));
+  border-bottom: 1px solid #222833;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.tile .body { flex: 1; padding: 8px; color: #cfd6e2; }
+
+.frame {
+  background: linear-gradient(180deg, #111419, #0c0f13);
+  border: 1px dashed #394255;
+  border-radius: 8px;
+  position: relative;
+}
+
+.frame::after {
+  content: 'FRAME';
+  position: absolute;
+  top: 6px; right: 8px;
+  color: #4f5b6e; font-size: 11px; letter-spacing: 1px;
+}
+
+.badge {
+  position: absolute;
+  bottom: 6px; right: 8px;
+  background: rgba(0,0,0,0.4);
+  padding: 2px 6px; border-radius: 4px; font-size: 11px; color: var(--muted);
+}
+
+.danger { outline: 2px solid var(--danger) !important; }
+
+.hidden { display: none !important; }
+

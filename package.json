@@ -1,0 +1,16 @@
+{
+  "name": "tile-2.0",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Automation helpers for Tile 2.0 workflows",
+  "scripts": {
+    "web:open": "node scripts/open-web.mjs",
+    "web:serve": "python3 -m http.server --directory web 8080",
+    "macos:build-native": "mkdir -p native/macos/build && swiftc native/macos/windowctl.swift -o native/macos/build/windowctl",
+    "macos:overlay-install": "npm install --prefix electron",
+    "macos:overlay-start": "npm start --prefix electron",
+    "macos:setup": "npm run macos:overlay-install && npm run macos:build-native",
+    "macos:dev": "npm run macos:setup && npm run macos:overlay-start"
+  },
+  "packageManager": "yarn@4.9.1"
+}
